@@ -8,7 +8,8 @@ rospack = rospkg.RosPack()
 print('\033[93mYOU NEED TO HAVE A ROSCORE RUNNING!\033[0m')
 
 # Get the file path to the default pcd file created by smb_slam
-mapPath = rospack.get_path('smb_slam') + '/compslam_map.pcd'
+mapPath = input('path to .pcd file: ')
+# mapPath = '/home/jonas/rss/maps_slam/sim_maps/map.pcd'
 
 # Get the path to the script
 smb_nav_path = rospack.get_path('smb_navigation')
@@ -17,7 +18,7 @@ smb_nav_path = rospack.get_path('smb_navigation')
 os.system('chmod +x ' + smb_nav_path + '/script/pcd_to_gridmap.sh') 
 
 # Set the arguments and run the script
-output_path = smb_nav_path + '/data/test'
+output_path = input('path to output folder: ')
 run_rviz = 'true'
 
 command_string = smb_nav_path + '/script/pcd_to_gridmap.sh ' + mapPath + ' ' + output_path + ' ' + run_rviz
